@@ -1,0 +1,19 @@
+import jieba
+f1=open('第一组.txt','r',encoding='utf-8')
+f2=open('第一组分词结果(精准模式).txt','w',encoding='utf-8')
+f3=open('第一组分词结果(全模式).txt','w',encoding='utf-8')
+ls1=[]
+ls2=[]
+for line in f1:
+    line=line.replace('，','').replace('@','').replace('！','').replace("：",'').replace("。",'').replace("“",'').replace("”",'').replace("？",'').replace("#",'').replace("!",'').replace("、",'').replace("【",'').replace("】",'').replace('"','').replace(' ','')
+    ls1=jieba.lcut(line)
+    ls2=jieba.lcut(line,cut_all=True)
+    for i in ls1:
+        f2.write(i)
+        f2.write(" | ")
+    for j in ls2:
+        f3.write(j)
+        f3.write(" | ")
+f1.close()
+f2.close()
+f3.close()
