@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Sep 25 21:30:19 2019
+
+@author: a
+"""
+
+import logging
+from stanfordcorenlp import StanfordCoreNLP  #导入StandfordCoreNLP模块
+nlp = StanfordCoreNLP('C:\\Users\\a\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Anaconda3 (64-bit)\\stanford-corenlp-full-2018-10-05',port=9010, lang='zh',logging_level=logging.DEBUG)
+f1=open('D:\\commend_file\\0002.txt','r',encoding='utf-8')
+f4=open('D:\\commend_file\\004words_ner.txt','w',encoding='utf-8')
+for line in f1:
+    lsl=nlp.pos_tag(line)
+    list(lsl)
+    for i in lsl:
+        print(i,end='')
