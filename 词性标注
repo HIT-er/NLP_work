@@ -1,0 +1,25 @@
+import jieba
+import jieba.posseg as pseg
+f2=open('第一组分词结果(精准模式).txt','r',encoding='utf-8')
+f3=open('第一组分词结果(全模式).txt','r',encoding='utf-8')
+f4=open('第一组分词词性标注(精准模式).txt','w',encoding='utf-8')
+f5=open('第一组分词词性标注(全模式).txt','w',encoding='utf-8')
+ls1=[]
+ls2=[]
+for line1 in f2:
+    line1=line1.replace(' | ','')
+    ls1=pseg.cut(line1)
+for line2 in f3:
+    line2=line2.replace(' | ','')
+    ls2=pseg.cut(line2)
+    for word,flag in ls1:
+        f4.write(word)
+        f4.write(flag+' ')
+        f4.write(" | ")
+    for word,flag in ls2:
+        f5.write(word)
+        f5.write(flag+' ')
+        f5.write(" | ")
+f2.close()
+f3.close()
+f4.close()
